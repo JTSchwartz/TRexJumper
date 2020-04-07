@@ -38,8 +38,9 @@ class _GameWrapperState extends State<GameWrapper> {
   }
 
   void startGame() async {
+    final Size size = await Flame.util.initialDimensions();
     image = await Flame.images.loadAll(["sprite.png"]);
-    game = TRexJumper(spriteImage: image[0]);
+    game = TRexJumper(size, spriteImage: image[0]);
     setState(() {});
     Flame.util.addGestureRecognizer(TapGestureRecognizer()
       ..onTapDown = (TapDownDetails event) => game.onTap());

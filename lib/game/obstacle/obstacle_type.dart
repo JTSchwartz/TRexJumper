@@ -4,8 +4,23 @@ import 'package:flame/sprite.dart';
 
 import '../collision/box.dart';
 
-class ObstacleType {
-  const ObstacleType._internal(
+abstract class ObstacleType {
+  String type;
+  double width;
+  double height;
+  double y;
+  int multipleSpeed;
+  double minGap;
+  double minSpeed;
+  int numFrames;
+  double frameRate;
+  double speedOffset;
+  
+  List<CollisionBox> collisionBoxes;
+}
+
+class X {
+  const X._internal(
     this.type, {
     this.width,
     this.height,
@@ -32,7 +47,7 @@ class ObstacleType {
 
   final List<CollisionBox> collisionBoxes;
 
-  static const cactusSmall = ObstacleType._internal(
+  static const cactusSmall = X._internal(
     "cactusSmall",
     width: 34.0,
     height: 70.0,
@@ -62,7 +77,7 @@ class ObstacleType {
     ],
   );
 
-  static const cactusLarge = ObstacleType._internal(
+  static const cactusLarge = X._internal(
     "cactusLarge",
     width: 50.0,
     height: 100.0,
@@ -77,7 +92,7 @@ class ObstacleType {
     ],
   );
 
-  static const pterodactyl = ObstacleType._internal(
+  static const pterodactyl = X._internal(
     "pterodactyl",
     width: 84.0,
     height: 60.0,
@@ -90,34 +105,34 @@ class ObstacleType {
     ],
     );
   
-  static Sprite spriteForType(ObstacleType type, Image spriteImage) { // TODO: Allow Animations
-    switch (type) {
-      case cactusSmall:
-        return Sprite.fromImage(
-          spriteImage,
-          x: 446.0,
-          y: 2.0,
-          width: type.width,
-          height: type.height,
-          );
-      case cactusLarge:
-        return Sprite.fromImage(
-          spriteImage,
-          x: 652.0,
-          y: 2.0,
-          width: type.width,
-          height: type.height,
-          );
-      case pterodactyl:
-        return Sprite.fromImage(
-          spriteImage,
-          x: 264.0,
-          y: 18.0,
-          width: type.width,
-          height: type.height,
-          );
-      default:
-        return null;
-    }
-  }
+//  static Sprite spriteForType(ObstacleType type, Image spriteImage) { // TODO: Allow Animations
+//    switch (type) {
+//      case cactusSmall:
+//        return Sprite.fromImage(
+//          spriteImage,
+//          x: 446.0,
+//          y: 2.0,
+//          width: type.width,
+//          height: type.height,
+//          );
+//      case cactusLarge:
+//        return Sprite.fromImage(
+//          spriteImage,
+//          x: 652.0,
+//          y: 2.0,
+//          width: type.width,
+//          height: type.height,
+//          );
+//      case pterodactyl:
+//        return Sprite.fromImage(
+//          spriteImage,
+//          x: 264.0,
+//          y: 18.0,
+//          width: type.width,
+//          height: type.height,
+//          );
+//      default:
+//        return null;
+//    }
+//  }
 }

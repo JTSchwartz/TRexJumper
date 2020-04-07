@@ -37,7 +37,7 @@ class GameOverText extends SpriteComponent with Resizable {
           Sprite.fromImage(
             spriteImage,
             x: 955.0,
-            y: 26.0,
+            y: 29.0,
             width: GameOverConfig.textWidth,
             height: GameOverConfig.textHeight,
           ),

@@ -1,6 +1,10 @@
 import 'dart:ui';
 
 import 'package:flame/game.dart';
+import 'package:flame/text_config.dart';
+import 'package:flame/anchor.dart';
+import 'package:flame/components/text_box_component.dart';
+import 'package:flame/components/text_component.dart';
 
 import 'collision/utils.dart';
 import 'config.dart';
@@ -12,12 +16,13 @@ import 'trex/trex.dart';
 enum GameStatus { playing, waiting, gameOver }
 
 class TRexJumper extends BaseGame {
-	TRexJumper({Image spriteImage}) {
+	TRexJumper(Size screenSize, {Image spriteImage}) {
 		character = TRex(spriteImage);
 		horizon = Horizon(spriteImage);
 		gameOverPanel = GameOverPanel(spriteImage);
 		
 		this..add(horizon)..add(character)..add(gameOverPanel);
+		this..add(TextComponent('Single Tap to Jump\nDouble Tap to Toggle Ducking', config: TextConfig(fontSize: 18.0))..anchor = Anchor.bottomLeft..x = 15..y = screenSize.height - 10);
 	}
 	
 	TRex character;
