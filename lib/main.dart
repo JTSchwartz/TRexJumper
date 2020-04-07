@@ -44,8 +44,8 @@ class _GameWrapperState extends State<GameWrapper> {
     setState(() {});
     Flame.util.addGestureRecognizer(TapGestureRecognizer()
       ..onTapDown = (TapDownDetails event) => game.onTap());
-    Flame.util.addGestureRecognizer(DoubleTapGestureRecognizer()..onDoubleTap = () => game.onDoubleTap());
-
+    Flame.util.addGestureRecognizer(
+        DoubleTapGestureRecognizer()..onDoubleTap = () => game.onDoubleTap());
   }
 
   @override

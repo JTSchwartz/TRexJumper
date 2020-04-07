@@ -44,7 +44,7 @@ bool checkForCollision(Obstacle obstacle, TRex character) {
 bool boxCompare(CollisionBox characterBox, CollisionBox obstacleBox) {
   final double obstacleX = obstacleBox.x;
   final double obstacleY = obstacleBox.y;
-  
+
   return characterBox.x < obstacleX + obstacleBox.width &&
       characterBox.x + characterBox.width > obstacleX &&
       characterBox.y < obstacleBox.y + obstacleBox.height &&

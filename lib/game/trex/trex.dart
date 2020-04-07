@@ -69,7 +69,7 @@ class TRex extends PositionComponent
 
   void jump(double speed) {
     if (status == TRexStatus.jumping || status == TRexStatus.ducking) return;
-  
+
     status = TRexStatus.jumping;
     this.jumpVelocity = TRexConfig.initialJumpVelocity - (speed / 10);
     this.reachedMinHeight = false;
@@ -78,10 +78,10 @@ class TRex extends PositionComponent
   void duck() {
     if (status == TRexStatus.jumping) return;
     if (status == TRexStatus.ducking) return stand();
-  
+
     status = TRexStatus.ducking;
   }
-  
+
   void stand() {
     status = TRexStatus.running;
   }
