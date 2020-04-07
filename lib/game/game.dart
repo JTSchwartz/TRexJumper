@@ -1,9 +1,10 @@
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 import 'package:flame/anchor.dart';
 import 'package:flame/components/text_component.dart';
 import 'package:flame/game.dart';
 import 'package:flame/text_config.dart';
+import 'package:flutter/material.dart';
 import 'package:trexjumper/game/obstacle/obstacle.dart';
 
 import 'collision/utils.dart';
@@ -16,25 +17,26 @@ import 'trex/trex.dart';
 enum GameStatus { playing, waiting, gameOver }
 
 class TRexJumper extends BaseGame {
-  TRexJumper(Size screenSize, {Image spriteImage}) {
+  TRexJumper(ui.Size screenSize, {ui.Image spriteImage}) {
     character = TRex(spriteImage);
     horizon = Horizon(spriteImage);
     gameOverPanel = GameOverPanel(spriteImage);
     scoreText = TextComponent(scoreString, config: TextConfig(fontSize: 22.0));
-    instructionsText =
-        TextComponent(instructionsString, config: TextConfig(fontSize: 18.0));
+    instructionsText = TextComponent(instructionsString,
+        config: TextConfig(fontSize: 18.0, textAlign: TextAlign.center));
 
-    this..add(horizon)..add(character)..add(gameOverPanel);
     this
+      ..add(horizon)
+      ..add(character)
+      ..add(gameOverPanel)
       ..add(instructionsText
-        ..anchor = Anchor.bottomLeft
-        ..x = 15
-        ..y = screenSize.height - 10);
-    this
+//        ..anchor = Anchor.bottomLeft
+        ..x = screenSize.width / 2 - instructionsText.width / 2
+        ..y = screenSize.height - 100)
       ..add(scoreText
-        ..anchor = Anchor.topRight
-        ..x = screenSize.width - 15
-        ..y = 10);
+//        ..anchor = Anchor.topRight
+        ..x = screenSize.width / 2 - scoreText.width / 2
+        ..y = 15);
   }
 
   TRex character;
@@ -141,5 +143,10 @@ class TRexJumper extends BaseGame {
         doGameOver();
       }
     }
+  }
+
+  @override
+  Color backgroundColor() {
+    return Colors.white;
   }
 }
