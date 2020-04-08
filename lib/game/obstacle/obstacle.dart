@@ -22,6 +22,11 @@ class ObstacleManager extends PositionComponent
   ObstacleManager(this.spriteImage) : super();
   ListQueue<String> history = ListQueue();
   Image spriteImage;
+  double horizonY = 0.0;
+
+  void setHorizonY(yPosition) {
+    horizonY = yPosition;
+  }
 
   void updateWithSpeed(double t, double speed) {
     for (final o in components) {
@@ -51,7 +56,7 @@ class ObstacleManager extends PositionComponent
     if (duplicateObstacleCheck(newObstacleType)) {
       return;
     } else {
-      final obstacle = Obstacle(spriteImage, newObstacleType);
+      final obstacle = Obstacle(spriteImage, newObstacleType, horizonY);
 
       obstacle.x = HorizonDimensions.width;
 
@@ -96,7 +101,7 @@ class Obstacle extends PositionComponent
 
   bool get isVisible => x + width > 0;
 
-  Obstacle(Image spriteImage, String type) : super() {
+  Obstacle(Image spriteImage, String type, double horizonY) : super() {
     switch (type) {
       case "cactusSmall":
         actualObstacle = CactusSmall(spriteImage);
@@ -113,6 +118,7 @@ class Obstacle extends PositionComponent
     }
     width = actualObstacle.width;
     height = actualObstacle.height;
+    actualObstacle.y += horizonY;
     y = actualObstacle.y;
   }
 
@@ -157,7 +163,7 @@ class CactusSmall extends SpriteComponent with ObstacleType {
   String type = "cactusSmall";
   double width = 34.0;
   double height = 70.0;
-  double y = 327.0;
+  double y = -60.0;
   int multipleSpeed = 4;
   double minSpeed = 0.0;
 
@@ -178,7 +184,7 @@ class CactusLarge extends SpriteComponent with ObstacleType {
   String type = "cactusLarge";
   double width = 50.0;
   double height = 100.0;
-  double y = 310.0;
+  double y = -75.0;
   int multipleSpeed = 7;
   double minSpeed = 0.0;
 
@@ -197,7 +203,7 @@ class Pterodactyl extends AnimationComponent with ObstacleType {
   String type = "pterodactyl";
   double width = 84.0;
   double height = 60.0;
-  double y = 285.0;
+  double y = -110.0;
   int multipleSpeed = 7;
   double minSpeed = 0.0;
 

@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flame/components/component.dart';
@@ -9,10 +8,9 @@ import 'package:flame/components/mixins/tapable.dart';
 import 'package:flame/sprite.dart';
 
 import '../obstacle/obstacle.dart';
+import '../utils.dart';
 import 'clouds.dart';
 import 'config.dart';
-
-Random rnd = Random();
 
 class HorizonEdge extends PositionComponent
     with HasGameRef, Tapable, ComposedComponent, Resizable {
@@ -53,7 +51,7 @@ class HorizonEdge extends PositionComponent
   final double bumpThreshold = 0.5;
 
   bool getRandomType() {
-    return rnd.nextDouble() > bumpThreshold;
+    return rand.nextDouble() > bumpThreshold;
   }
 
   void updateXPos(bool isBumpyFirst, double increment) {
@@ -74,6 +72,12 @@ class HorizonEdge extends PositionComponent
     updateXPos(firstGround.x <= 0, increment);
 
     cloudManager.updateWithSpeed(t, speed);
+
+
+    if (y != obstacleManager.horizonY) {
+      obstacleManager.setHorizonY(y);
+    }
+
     obstacleManager.updateWithSpeed(t, speed);
 
     super.update(t);
