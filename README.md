@@ -23,12 +23,12 @@ This project is written in Dart utilizing the Flutter framework in order to buil
 
 To build yourself, or run on iOS, follow the instructions below:
 
-1.) Install the [Dart SDK](https://dart.dev/get-dart)
-1.) Install the [Flutter SDK](https://flutter.dev/docs/get-started/install)
-1.) Running the app:
-    - [Android Studio](https://flutter.dev/docs/get-started/test-drive#run-the-app)
-    - [VS Code](https://flutter.dev/docs/development/tools/vs-code#running-and-debugging)
-1.) Building the app:
-    - [Android](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
-    - [iOS](https://flutter.dev/docs/deployment/ios#create-a-build-archive)
-    - [Web](https://flutter.dev/docs/deployment/web)
+1. Install the [Dart SDK](https://dart.dev/get-dart)
+1. Install the [Flutter SDK](https://flutter.dev/docs/get-started/install)
+1. Running the app:
+    * [Android Studio](https://flutter.dev/docs/get-started/test-drive#run-the-app)
+    * [VS Code](https://flutter.dev/docs/development/tools/vs-code#running-and-debugging)
+1. Building the app:
+    * [Android](https://flutter.dev/docs/deployment/android#building-the-app-for-release)
+    * [iOS](https://flutter.dev/docs/deployment/ios#create-a-build-archive)
+    * [Web](https://flutter.dev/docs/deployment/web)
